@@ -1,37 +1,90 @@
-🧬 Mendelian Randomization Analysis of Lysosome-Associated Proteins
+🧬 Mendelian Randomization Pipeline for Target Identification
 
 Author: Neha Manoti
 Affiliation: Uppsala University
+Project: MSc Precision Medicine Thesis
 
-📌 Project Description
+📌 Overview
 
-This repository contains a reproducible pipeline for performing two-sample Mendelian Randomization (MR) to investigate causal effects of circulating proteins on cardiac valve disease.
+This repository contains a reproducible pipeline for performing two-sample Mendelian Randomization (MR) to investigate causal relationships between circulating proteins and disease outcomes.
 
-🎯 Aim
+The workflow integrates large-scale proteomics and GWAS datasets (UK Biobank PPP) to identify potential therapeutic targets and prioritise candidates for downstream validation.
 
-To identify candidate proteins with potential causal roles in disease pathogenesis and prioritize targets for downstream functional validation.
+🎯 Objective
 
-🔁 Reproducibility
+To identify proteins with causal effects on disease risk using genetic instruments and robust MR methodology, supporting target discovery in precision medicine.
 
-All analyses are implemented in R with clearly structured scripts.
-The workflow follows standard MR practices including:
+## 🔁 Workflow
 
-Instrument selection
-Harmonization
-MR estimation
-Sensitivity analyses
-📊 Summary of Findings
-Identified multiple candidate proteins with evidence of causal association
-Performed negative control analyses to assess robustness
-Prioritized targets for functional validation
-🧪 Tools & Technologies
-R (TwoSampleMR, dplyr, ggplot2)
-UK Biobank
-Olink proteomics
-📁 Repository Structure
+- **Instrument Selection**  
+  - Selection of genome-wide significant SNPs  
+  - Filtering based on instrument strength (F-statistic > 10)
 
-(To be updated)
+- **Outcome Formatting**  
+  - Standardisation of GWAS summary statistics  
+  - Conversion to MR-compatible format  
 
-📌 Notes
+- **Harmonisation**  
+  - Alignment of exposure and outcome datasets  
+  - Removal of ambiguous or mismatched SNPs  
 
-This repository is intended to ensure transparency and reproducibility of analyses performed during my MSc thesis.
+- **Mendelian Randomization Analysis**  
+  - Inverse Variance Weighted (IVW)  
+  - MR-Egger regression  
+  - Weighted median method  
+  - Sensitivity analyses (heterogeneity, pleiotropy)  
+
+- **Visualisation**  
+  - Forest plots for effect estimates  
+  - Bubble lattice plots across MR methods
+
+## 📁 Repository Structure
+
+```text
+scripts/
+  01_instrument_selection.R
+  02_format_outcome.R
+  03_harmonisation.R
+  04_mr_analysis.R
+  05_visualization.R
+
+data/
+  exposure/
+  outcome/
+  processed/
+
+results/
+  plots/
+
+docs/
+  methods.md
+
+  
+## 📊 Key Outputs
+
+- MR results table (`MR_results_table.csv`)  
+- Heterogeneity and pleiotropy results  
+- Filtered robust associations (`robust_MR_hits.csv`)  
+- Publication-ready plots (forest plot, bubble lattice)  
+
+---
+
+## 🔒 Data Availability
+
+Due to data access restrictions (e.g. UK Biobank), raw datasets are not included in this repository.
+
+Users should place their input files in the appropriate `data/` directories and update file paths if necessary.
+
+---
+
+## 🧪 Tools & Technologies
+
+- R (TwoSampleMR, data.table, dplyr, ggplot2)  
+- GWAS summary statistics  
+- Olink proteomics (UK Biobank PPP)  
+
+---
+
+## 📌 Notes
+
+This repository is designed to ensure **transparency, reproducibility, and modularity** of Mendelian Randomization analyses performed during my MSc thesis.
