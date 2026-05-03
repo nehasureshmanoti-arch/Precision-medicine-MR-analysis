@@ -59,6 +59,18 @@ results/
 docs/
   methods.md
 
+## ▶️ How to Run
+
+1. Place exposure and outcome GWAS files in the `data/` directory  
+2. Run scripts in order:
+
+- scripts/01_instrument_selection.R  
+- scripts/02_format_outcome.R  
+- scripts/03_harmonisation.R  
+- scripts/04_mr_analysis.R  
+- scripts/05_visualization.R  
+
+3. Results will be saved in the `results/` folder
   
 ## 📊 Key Outputs
 
